@@ -1,0 +1,36 @@
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"> </script> -->
+
+<script src="assets/js/jquery.min.js"> </script>
+<script> 
+
+
+    socket = new WebSocket('ws://10.3.2.156:8000');
+    socket.onopen = function () {
+        socket.send('hello');
+    };
+    socket.onmessage = function (s) {
+        alert('got reply ' + s);
+    };
+
+
+
+    // function init() {
+    //     var socket = io('http://10.3.2.156:8000');
+
+    //     // 
+    //     socket.on('connect', function () {
+    //         console.log('The server is ready!');
+    //     });
+
+    //     // on msg
+    //     socket.on('msg', function (data) {
+
+    //         // log the message
+    //         console.log(data);
+
+    //         // send message
+    //         socket.emit('msg', 'hello server');
+    //     });
+    // }
+    // window.addEventListener('DOMContentLoaded', init);
+</script>

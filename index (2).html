@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- check User session -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    
+    <script>
+        SideBar.LoadSideBar();
+    </script>
+    <!-- /End check -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GPSMOVIL PRO | Administración</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- NProgress -->
+    <link href="assets/css/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- Custom TablePRD -->
+    <link href="assets/css/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/index.css">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title">
+                            <i class="fa fa-map-marker"></i>
+                            <!-- <i class="fa fa-map-o"></i> -->
+                            <span>GPSMOVILPRO</span>
+                        </a>
+                    </div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="images/user.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido</span>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+                    <!-- sidebar menu DINAMICO-->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        
+                    </div>
+                    
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" onclick="Session.End();">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Lista de Clientes</h3>
+                        </div>
+                        <div class="title_right">
+                            <h3 id="fecha" style="float:right"></h3>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <!--  CONTENIDO DE LA PAGINA -->
+                                <div class="x_content">
+                                    <div class="table-responsive">
+                                        <table id="tb_clientes" class="table table-striped jambo_table bulk_action">
+                                            <thead>
+                                              
+                                            </thead>
+                                            <tbody id="lista_clientes">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="ln_solid"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modals -->
+    <!-- Large modal -->
+    <div id="modalClientes" class="modal fade factura-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-factura">
+                <div id="detalleCliente" class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="clearfix"></div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <!-- <div class="x_panel"> -->
+                                    <!--  CONTENIDO DE LA PAGINA -->
+                                    <div class="x_content">
+                                        <div class="table-responsive">
+                                            <table id="tb_detalle_cliente" style="width:100%" class="table table-striped jambo_table bulk_action">
+                                                <thead>
+                                                    
+                                                </thead>
+                                                <tbody id="detail_devices">
+    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+    
+                        <div class="clearfix"></div>
+
+                    </div>
+                <div class="modal-footer">
+                    <div id="totalFact">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modals -->
+    <!-- Large modal -->
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- NProgress -->
+    <script src="assets/js/nprogress/nprogress.js"></script>
+    <!-- Validator -->
+    <script src="assets/js/validator.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <!-- Input mask -->
+    <script src="assets/js/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
+    <!-- JS dataTables -->
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- JS Moments -->
+    <script src="assets/js/moment.min.js"></script>
+    <!-- Sweet Alert -->
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <!-- JS clients -->
+    <script src="assets/js/client.js"></script>
+
+</body>
+
+</html>
+
+<script>
+</script>
